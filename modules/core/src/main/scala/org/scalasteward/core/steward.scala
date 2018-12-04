@@ -20,11 +20,15 @@ import better.files.File
 import cats.FlatMap
 import cats.effect.{ExitCode, IO, IOApp, Sync}
 import cats.implicits._
+import org.http4s.HttpRoutes
+import org.http4s.server.blaze.BlazeServerBuilder
 import org.scalasteward.core.application.Context
 import org.scalasteward.core.github.data.Repo
-import org.scalasteward.core.util.logger.LoggerOps
+import org.http4s.dsl.io._
 
 object steward extends IOApp {
+
+  /*
   override def run(args: List[String]): IO[ExitCode] =
     Context.create[IO](args).use { ctx =>
       ctx.logger.infoTotalTime("run") {
@@ -41,6 +45,29 @@ object steward extends IOApp {
         } yield ExitCode.Success
       }
     }
+   */
+
+  override def run(args: List[String]): IO[ExitCode] =
+    BlazeServerBuilder[IO]
+      .bindHttp(8080, "::")
+      .withHttpApp(echoService)
+      .serve
+      .compile
+      .drain
+      .as(ExitCode.Success)
+
+  def echoService =
+    HttpRoutes
+      .of[IO] {
+        case req @ GET -> Root / _ =>
+          println(req)
+          Ok(req.uri.toString)
+        case req @ POST -> Root / _ =>
+          println(req)
+          println(req.bodyAsText.compile.toList.unsafeRunSync().mkString("\n"))
+          Ok(req.bodyAsText)
+      }
+      .orNotFound
 
   def prepareEnv[F[_]: FlatMap](ctx: Context[F]): F[Unit] =
     for {
