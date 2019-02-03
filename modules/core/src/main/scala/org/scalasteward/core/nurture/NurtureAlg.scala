@@ -22,14 +22,15 @@ import cats.{FlatMap, Monad}
 import io.chrisdavenport.log4cats.Logger
 import org.scalasteward.core.application.Config
 import org.scalasteward.core.git.{Branch, GitAlg}
-import org.scalasteward.core.github.GitHubApiAlg
-import org.scalasteward.core.github.data.{NewPullRequestData, Repo}
+import org.scalasteward.core.vcs.github.GitHubApiAlg
 import org.scalasteward.core.model.Update
 import org.scalasteward.core.sbt.SbtAlg
 import org.scalasteward.core.update.FilterAlg
 import org.scalasteward.core.util.logger.LoggerOps
 import org.scalasteward.core.util.{BracketThrowable, MonadThrowable}
-import org.scalasteward.core.{git, github, util}
+import org.scalasteward.core.{git, util}
+import org.scalasteward.core.vcs.github
+import org.scalasteward.core.vcs.github.data.{NewPullRequestData, Repo}
 
 class NurtureAlg[F[_]](
     implicit

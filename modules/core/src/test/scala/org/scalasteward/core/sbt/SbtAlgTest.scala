@@ -1,7 +1,7 @@
 package org.scalasteward.core.sbt
 
 import better.files.File
-import org.scalasteward.core.github.data.Repo
+import org.scalasteward.core.vcs.github.data.Repo
 import org.scalasteward.core.mock.MockContext.sbtAlg
 import org.scalasteward.core.mock.MockState
 import org.scalatest.{FunSuite, Matchers}

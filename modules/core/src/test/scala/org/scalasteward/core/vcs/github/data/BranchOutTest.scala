@@ -1,4 +1,4 @@
-package org.scalasteward.core.github.data
+package org.scalasteward.core.vcs.github.data
 
 import io.circe.parser
 import org.scalasteward.core.git.Sha1.HexString

@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.scalasteward.core.github.data
+package org.scalasteward.core.vcs.github.data
 
 import cats.implicits._
 import io.circe.Decoder

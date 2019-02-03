@@ -19,7 +19,7 @@ package org.scalasteward.core.update
 import cats.implicits._
 import io.chrisdavenport.log4cats.Logger
 import org.scalasteward.core.dependency.{Dependency, DependencyRepository}
-import org.scalasteward.core.github.data.Repo
+import org.scalasteward.core.vcs.github.data.Repo
 import org.scalasteward.core.model.Update
 import org.scalasteward.core.nurture.PullRequestRepository
 import org.scalasteward.core.sbt._

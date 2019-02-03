@@ -1,8 +1,8 @@
-package org.scalasteward.core.github.http4s
+package org.scalasteward.core.vcs.github.http4s
 
 import cats.implicits._
 import org.scalasteward.core.git.Branch
-import org.scalasteward.core.github.data.Repo
+import org.scalasteward.core.vcs.github.data.Repo
 import org.scalatest.{FunSuite, Matchers}
 
 class http4sUrlTest extends FunSuite with Matchers {

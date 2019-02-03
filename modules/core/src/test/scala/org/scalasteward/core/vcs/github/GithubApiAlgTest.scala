@@ -1,10 +1,10 @@
-package org.scalasteward.core.github
+package org.scalasteward.core.vcs.github
 
 import cats.effect.IO
 import org.http4s.Uri
 import org.scalasteward.core.git.Sha1.HexString
 import org.scalasteward.core.git.{Branch, Sha1}
-import org.scalasteward.core.github.data._
+import org.scalasteward.core.vcs.github.data._
 import org.scalasteward.core.mock.MockContext.config
 import org.scalasteward.core.util.uri.fromString
 import org.scalatest.{FunSuite, Matchers}

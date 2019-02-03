@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package org.scalasteward.core.github.http4s
+package org.scalasteward.core.vcs.github.http4s
 
 import cats.implicits._
 import org.http4s.Uri
 import org.scalasteward.core.git.Branch
-import org.scalasteward.core.github.Url
-import org.scalasteward.core.github.data.Repo
+import org.scalasteward.core.vcs.github.Url
+import org.scalasteward.core.vcs.github.data.Repo
 import org.scalasteward.core.util.ApplicativeThrowable
 import org.scalasteward.core.util.uri._
 

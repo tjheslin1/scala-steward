@@ -14,21 +14,9 @@
  * limitations under the License.
  */
 
-package org.scalasteward.core.github
+package org.scalasteward.core.vcs.github.data
 
-import org.scalasteward.core.git.Branch
-import org.scalasteward.core.github.data.Repo
-
-class Url(apiHost: String) {
-  def branches(repo: Repo, branch: Branch): String =
-    s"${repos(repo)}/branches/${branch.name}"
-
-  def forks(repo: Repo): String =
-    s"${repos(repo)}/forks"
-
-  def pulls(repo: Repo): String =
-    s"${repos(repo)}/pulls"
-
-  def repos(repo: Repo): String =
-    s"$apiHost/repos/${repo.owner}/${repo.repo}"
-}
+final case class AuthenticatedUser(
+    login: String,
+    accessToken: String
+)

@@ -14,18 +14,21 @@
  * limitations under the License.
  */
 
-package org.scalasteward.core
+package org.scalasteward.core.vcs.github
 
-import org.scalasteward.core.model.Update
-import org.scalasteward.core.application.Config
-import org.scalasteward.core.github.data.Repo
+import org.scalasteward.core.git.Branch
+import org.scalasteward.core.vcs.github.data.Repo
 
-package object github {
+class Url(apiHost: String) {
+  def branches(repo: Repo, branch: Branch): String =
+    s"${repos(repo)}/branches/${branch.name}"
 
-  def getLogin(config: Config, repo: Repo): String =
-    if (config.doNotFork) repo.owner
-    else config.gitHubLogin
+  def forks(repo: Repo): String =
+    s"${repos(repo)}/forks"
 
-  def headFor(login: String, update: Update): String =
-    s"$login:${git.branchFor(update).name}"
+  def pulls(repo: Repo): String =
+    s"${repos(repo)}/pulls"
+
+  def repos(repo: Repo): String =
+    s"$apiHost/repos/${repo.owner}/${repo.repo}"
 }

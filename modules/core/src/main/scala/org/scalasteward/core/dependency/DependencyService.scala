@@ -20,8 +20,8 @@ import cats.implicits._
 import io.chrisdavenport.log4cats.Logger
 import org.scalasteward.core.application.Config
 import org.scalasteward.core.git.{GitAlg, Sha1}
-import org.scalasteward.core.github.GitHubApiAlg
-import org.scalasteward.core.github.data.{Repo, RepoOut}
+import org.scalasteward.core.vcs.github.GitHubApiAlg
+import org.scalasteward.core.vcs.github.data.{Repo, RepoOut}
 import org.scalasteward.core.sbt.SbtAlg
 import org.scalasteward.core.util
 import org.scalasteward.core.util.MonadThrowable

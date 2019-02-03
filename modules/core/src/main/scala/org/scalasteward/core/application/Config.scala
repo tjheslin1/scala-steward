@@ -20,7 +20,7 @@ import better.files._
 import cats.effect.Sync
 import cats.implicits._
 import org.scalasteward.core.git.Author
-import org.scalasteward.core.github.data.AuthenticatedUser
+import org.scalasteward.core.vcs.github.data.AuthenticatedUser
 import org.scalasteward.core.util
 import scala.sys.process.Process
 

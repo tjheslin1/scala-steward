@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.scalasteward.core.github.data
+package org.scalasteward.core.vcs.github.data
 
 import cats.implicits._
 import io.circe.Encoder
@@ -22,7 +22,8 @@ import io.circe.generic.semiauto._
 import org.scalasteward.core.git.Branch
 import org.scalasteward.core.model.Update
 import org.scalasteward.core.nurture.UpdateData
-import org.scalasteward.core.{git, github}
+import org.scalasteward.core.git
+import org.scalasteward.core.vcs.github
 
 final case class NewPullRequestData(
     title: String,

@@ -21,7 +21,7 @@ import cats.FlatMap
 import cats.effect.{ExitCode, IO, IOApp, Sync}
 import cats.implicits._
 import org.scalasteward.core.application.Context
-import org.scalasteward.core.github.data.Repo
+import org.scalasteward.core.vcs.github.data.Repo
 import org.scalasteward.core.util.logger.LoggerOps
 
 object steward extends IOApp {

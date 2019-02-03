@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package org.scalasteward.core.github.http4s
+package org.scalasteward.core.vcs.github.http4s
 
 import cats.effect.Sync
 import cats.implicits._
@@ -26,9 +26,9 @@ import org.http4s.headers.Authorization
 import org.http4s.{BasicCredentials, Headers, Request, Uri}
 import org.scalasteward.core.application.Config
 import org.scalasteward.core.git.Branch
-import org.scalasteward.core.github._
-import org.scalasteward.core.github.data._
-import org.scalasteward.core.github.http4s.Http4sGitHubApiAlg._
+import org.scalasteward.core.vcs.github._
+import org.scalasteward.core.vcs.github.data._
+import org.scalasteward.core.vcs.github.http4s.Http4sGitHubApiAlg._
 
 class Http4sGitHubApiAlg[F[_]](
     implicit

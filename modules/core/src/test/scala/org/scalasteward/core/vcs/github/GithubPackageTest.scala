@@ -1,6 +1,6 @@
-package org.scalasteward.core.github
+package org.scalasteward.core.vcs.github
 
-import org.scalasteward.core.github.data.Repo
+import org.scalasteward.core.vcs.github.data.Repo
 import org.scalasteward.core.mock.MockContext.config
 import org.scalatest.{FunSuite, Matchers}
 
