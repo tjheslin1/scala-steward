@@ -19,13 +19,12 @@ package org.scalasteward.core.vcs.github.http4s
 import cats.implicits._
 import org.http4s.Uri
 import org.scalasteward.core.git.Branch
-import org.scalasteward.core.vcs.github.Url
-import org.scalasteward.core.vcs.github.data.Repo
 import org.scalasteward.core.util.ApplicativeThrowable
 import org.scalasteward.core.util.uri._
+import org.scalasteward.core.vcs.Url
+import org.scalasteward.core.vcs.github.data.Repo
 
-class Http4sUrl(apiHost: String) {
-  val url = new Url(apiHost)
+class Http4sUrl(url: Url) {
 
   def branches[F[_]: ApplicativeThrowable](repo: Repo, branch: Branch): F[Uri] =
     fromString[F](url.branches(repo, branch))
@@ -33,8 +32,12 @@ class Http4sUrl(apiHost: String) {
   def forks[F[_]: ApplicativeThrowable](repo: Repo): F[Uri] =
     fromString[F](url.forks(repo))
 
-  def listPullRequests[F[_]: ApplicativeThrowable](repo: Repo, head: String): F[Uri] =
-    pulls[F](repo).map(_.withQueryParam("head", head).withQueryParam("state", "all"))
+  def listPullRequests[F[_]: ApplicativeThrowable](
+      repo: Repo,
+      queryParams: Seq[(String, String)] = Seq.empty): F[Uri] =
+    queryParams.foldLeft(pulls[F](repo)) {
+      case (pullUrl, (k, v)) => pullUrl.map(_.withQueryParam(k, v))
+    }
 
   def pulls[F[_]: ApplicativeThrowable](repo: Repo): F[Uri] =
     fromString[F](url.pulls(repo))

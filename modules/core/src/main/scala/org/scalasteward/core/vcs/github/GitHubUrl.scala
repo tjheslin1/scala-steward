@@ -17,9 +17,10 @@
 package org.scalasteward.core.vcs.github
 
 import org.scalasteward.core.git.Branch
+import org.scalasteward.core.vcs.Url
 import org.scalasteward.core.vcs.github.data.Repo
 
-class Url(apiHost: String) {
+class GitHubUrl(apiHost: String) extends Url {
   def branches(repo: Repo, branch: Branch): String =
     s"${repos(repo)}/branches/${branch.name}"
 
