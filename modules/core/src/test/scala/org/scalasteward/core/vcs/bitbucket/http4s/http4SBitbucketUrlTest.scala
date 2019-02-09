@@ -12,31 +12,31 @@ class http4SBitbucketUrlTest extends FunSuite with Matchers {
   import http4sUrl._
 
   type Result[A] = Either[Throwable, A]
-  val repo = Repo("tjheslin1", "googly")
+  val repo = Repo("tjheslin1", "simple-scala")
   val branch = Branch("master")
 
   test("branches") {
     branches[Result](repo, branch).map(_.toString) shouldBe
-    Right("https://api.bitbucket.org/2.0/repositories/tjheslin1/googly/refs/branches")
+    Right("https://api.bitbucket.org/2.0/repositories/tjheslin1/simple-scala/refs/branches")
   }
 
   test("forks") {
     forks[Result](repo).map(_.toString) shouldBe
-      Right("https://api.bitbucket.org/2.0/repositories/tjheslin1/googly/forks")
+      Right("https://api.bitbucket.org/2.0/repositories/tjheslin1/simple-scala/forks")
   }
 
   test("listPullRequests") {
-    listPullRequests[Result](repo).map(_.toString) shouldBe // TODO head ??
-    Right("https://api.bitbucket.org/2.0/repositories/tjheslin1/googly/pullrequests")
+    listPullRequests[Result](repo).map(_.toString) shouldBe
+    Right("https://api.bitbucket.org/2.0/repositories/tjheslin1/simple-scala/pullrequests")
   }
 
   test("pulls") {
     pulls[Result](repo).map(_.toString) shouldBe
-      Right("https://api.bitbucket.org/2.0/repositories/tjheslin1/googly/pullrequests")
+      Right("https://api.bitbucket.org/2.0/repositories/tjheslin1/simple-scala/pullrequests")
   }
 
   test("repos") {
     repos[Result](repo).map(_.toString) shouldBe
-      Right("https://api.bitbucket.org/2.0/repositories/tjheslin1/googly")
+      Right("https://api.bitbucket.org/2.0/repositories/tjheslin1/simple-scala")
   }
 }
